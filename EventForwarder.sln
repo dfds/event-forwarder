@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".k8s", ".k8s", "{45B10E54-C5B0-4FF6-9AFA-0F2474DA43D5}"
 	ProjectSection(SolutionItems) = preProject
 		k8s\eventforwarder_deployment.yaml = k8s\eventforwarder_deployment.yaml
+		k8s\kafka_credentials.yaml = k8s\kafka_credentials.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2A661284-9C6F-457E-9BCB-C42AB64950DC}"
