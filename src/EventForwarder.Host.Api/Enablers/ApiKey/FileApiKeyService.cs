@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -12,6 +11,7 @@ namespace AzureDevOpsJanitor.Host.EventForwarder.Enablers.ApiKey
         public FileApiKeyService()
         {
             var rawFileContent = File.ReadAllText("apikey.json");
+
             _keys = JsonSerializer.Deserialize<KeyFile>(rawFileContent);
         }
 
@@ -28,16 +28,6 @@ namespace AzureDevOpsJanitor.Host.EventForwarder.Enablers.ApiKey
             }
 
             return Task.FromResult(false);
-        }
-    }
-
-    class KeyFile
-    {
-        public Dictionary<string, string> Keys { get; set; }
-
-        public KeyFile()
-        {
-            Keys = new Dictionary<string, string>();
         }
     }
 }
