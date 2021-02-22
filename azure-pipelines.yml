@@ -24,9 +24,9 @@ steps:
     awsCredentials: 'DeveloperAutomation ECR'
     regionName: 'eu-west-1'
     imageSource: 'imagename'
-    sourceImageName: 'azure-devops-janitor-event-forwarder'
-    repositoryName: 'dfds.developerautomation-xavgy.azure-devops-janitor'
-    pushTag: 'azure-devops-janitor-event-forwarder-$(Build.BuildId)'
+    sourceImageName: 'event-forwarder'
+    repositoryName: 'dfds.developerautomation-xavgy.event-forwarder'
+    pushTag: 'event-forwarder-$(Build.BuildId)'
   
 # Replace token values in yaml files with pipeline variables
 - task: qetza.replacetokens.replacetokens-task.replacetokens@3

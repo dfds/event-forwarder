@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  azuredevopsjanitor.host.eventforwarder:
-    image: azure-devops-janitor-event-forwarder
+  eventforwarder:
+    image: event-forwarder
     build:
       context: .
-      dockerfile: src/AzureDevOpsJanitor.Host.EventForwarder/Dockerfile
+      dockerfile: src/EventForwarder.Host.Api/Dockerfile
