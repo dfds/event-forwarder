@@ -12,7 +12,7 @@ namespace AzureDevOpsJanitor.Host.EventForwarder.Controllers
 {
     [ApiController]
     [Route("/api/forwarder")]
-    //[ApiKeyAuthorize]
+    [ApiKeyAuthorize]
     public class ForwarderController : Controller
     {
         private readonly IProducer<string, IIntegrationEvent> _producer;
