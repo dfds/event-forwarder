@@ -18,6 +18,7 @@ steps:
     action: 'Run a Docker Compose command'
     dockerComposeCommand: 'build'
     arguments: '--build-arg PAT=$(System.AccessToken)'
+
 - task: ECRPushImage@1
   displayName: 'Push event-forwarder image to ECR'
   inputs:
