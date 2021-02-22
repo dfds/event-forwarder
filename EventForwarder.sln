@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventForwarder.Host.Api", "src\EventForwarder.Host.Api\EventForwarder.Host.Api.csproj", "{BAF7CAE6-B248-496F-97EC-3591E20C137C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAF7CAE6-B248-496F-97EC-3591E20C137C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF7CAE6-B248-496F-97EC-3591E20C137C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF7CAE6-B248-496F-97EC-3591E20C137C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF7CAE6-B248-496F-97EC-3591E20C137C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87E3E012-62EB-427E-B0DA-53E912603B09}
+	EndGlobalSection
+EndGlobal
