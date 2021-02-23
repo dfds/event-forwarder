@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-devops-janitor-event-forwarder-deployment
+  name: event-forwarder-deployment
   namespace: developerautomation-xavgy
   labels:
     project: developerautomation
     department: cloudengineering
     component: azure-devops-janitor
-    app: azure-devops-janitor-event-forwarder
+    app: event-forwarder
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-devops-janitor-event-forwarder
+      app: event-forwarder
   template:
     metadata:
       labels:
         project: developerautomation
         department: cloudengineering
-        app: azure-devops-janitor-event-forwarder
+        app: event-forwarder
     spec:
       priorityClassName: selfservice
       containers:
-      - name: azure-devops-janitor-event-forwarder
-        image: 642375522597.dkr.ecr.eu-west-1.amazonaws.com/dfds.developerautomation-xavgy.azure-devops-janitor:azure-devops-janitor-event-forwarder-$(Build.BuildId)
+      - name: event-forwarder
+        image: 642375522597.dkr.ecr.eu-west-1.amazonaws.com/dfds.developerautomation-xavgy.event-forwarder:event-forwarder-$(Build.BuildId)
         env:
           - name: AdoClient__ClientAccessToken
             valueFrom:
