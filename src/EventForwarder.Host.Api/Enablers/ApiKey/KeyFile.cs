@@ -2,7 +2,7 @@
 
 namespace AzureDevOpsJanitor.Host.EventForwarder.Enablers.ApiKey
 {
-    class KeyFile
+    internal sealed class KeyFile
     {
         public Dictionary<string, string> Keys { get; set; }
 

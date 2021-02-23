@@ -4,22 +4,27 @@ using System.Threading.Tasks;
 
 namespace AzureDevOpsJanitor.Host.EventForwarder.Enablers.ApiKey
 {
-    public class FileApiKeyService : IApiKeyService
+    public sealed class FileApiKeyService : IApiKeyService
     {
-        private readonly KeyFile _keys;
+        private readonly KeyFile _keyFile;
 
-        public FileApiKeyService()
+        public FileApiKeyService(string filePath = "apiKey.json")
         {
-            var rawFileContent = File.ReadAllText("apikey.json");
+            string content = string.Empty;
 
-            _keys = JsonSerializer.Deserialize<KeyFile>(rawFileContent);
+            if (File.Exists(filePath))
+            {
+                content = File.ReadAllText(filePath);
+            }
+
+            _keyFile = JsonSerializer.Deserialize<KeyFile>(content);
         }
 
         public Task<bool> IsAuthorized(string clientId, string apiKey)
         {
-            if (_keys.Keys.ContainsKey(apiKey))
+            if (_keyFile.Keys.ContainsKey(apiKey))
             {
-                if (_keys.Keys[apiKey] == clientId)
+                if (_keyFile.Keys[apiKey] == clientId)
                 {
                     return Task.FromResult(true);
                 }

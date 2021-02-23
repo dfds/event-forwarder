@@ -6,7 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.Kafka" Version="1.0.0-CI-20210222-003854" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.AmazonWebServices" Version="1.0.0-CI-20210223-143424" />
+      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.Kafka" Version="1.0.0-CI-20210223-143424" />
       <PackageReference Include="Sentry.AspNetCore" Version="3.0.7" />
     </ItemGroup>
 

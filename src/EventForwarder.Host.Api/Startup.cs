@@ -1,5 +1,6 @@
 using AzureDevOpsJanitor.Host.EventForwarder.Enablers.ApiKey;
 using CloudEngineering.CodeOps.Abstractions.Events;
+using CloudEngineering.CodeOps.Infrastructure.AmazonWebServices;
 using CloudEngineering.CodeOps.Infrastructure.Kafka;
 using CloudEngineering.CodeOps.Infrastructure.Kafka.Serialization;
 using Confluent.Kafka;
@@ -25,7 +26,7 @@ namespace AzureDevOpsJanitor.Host.EventForwarder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IApiKeyService, FileApiKeyService>();
+            services.AddScoped<IApiKeyService, SsmApiKeyService>();
 
             services.AddControllers();
 
@@ -43,6 +44,12 @@ namespace AzureDevOpsJanitor.Host.EventForwarder
 
                 return producer;
             });
+
+            services.AddAutoMapper(typeof(AwsFacade).Assembly);
+
+            services.Configure<AwsFacadeOptions>(Configuration.GetSection(AwsFacadeOptions.AwsFacade));
+
+            services.AddTransient<IAwsFacade, AwsFacade>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
