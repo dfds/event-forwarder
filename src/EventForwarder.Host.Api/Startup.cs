@@ -1,16 +1,11 @@
 using AzureDevOpsJanitor.Host.EventForwarder.Enablers.ApiKey;
-using CloudEngineering.CodeOps.Abstractions.Events;
 using CloudEngineering.CodeOps.Infrastructure.AmazonWebServices;
 using CloudEngineering.CodeOps.Infrastructure.Kafka;
-using CloudEngineering.CodeOps.Infrastructure.Kafka.Serialization;
-using Confluent.Kafka;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace AzureDevOpsJanitor.Host.EventForwarder
 {
@@ -30,26 +25,8 @@ namespace AzureDevOpsJanitor.Host.EventForwarder
 
             services.AddControllers();
 
-            services.Configure<KafkaOptions>(Configuration.GetSection(KafkaOptions.Kafka));
-
-            services.AddTransient(p =>
-            {
-                var logger = p.GetService<ILogger<IProducer<string, IIntegrationEvent>>>();
-                var producerOptions = p.GetService<IOptions<KafkaOptions>>();
-                var producerBuilder = new ProducerBuilder<string, IIntegrationEvent>(producerOptions.Value.Configuration);
-                var producer = producerBuilder.SetErrorHandler((_, e) => logger.LogError($"Error: {e?.Reason}", e))
-                                            .SetStatisticsHandler((_, json) => logger.LogDebug($"Statistics: {json}"))
-                                            .SetValueSerializer(new DefaultValueSerializer<IIntegrationEvent>())
-                                            .Build();
-
-                return producer;
-            });
-
-            services.AddAutoMapper(typeof(AwsFacade).Assembly);
-
-            services.Configure<AwsFacadeOptions>(Configuration.GetSection(AwsFacadeOptions.AwsFacade));
-
-            services.AddTransient<IAwsFacade, AwsFacade>();
+            services.AddKafka(Configuration);
+            services.AddAmazonWebServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
