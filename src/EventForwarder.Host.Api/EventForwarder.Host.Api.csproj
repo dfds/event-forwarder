@@ -7,9 +7,9 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.AmazonWebServices" Version="1.0.0-CI-20210303-175830" />
-      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.Kafka" Version="1.0.0-CI-20210303-175830" />
-      <PackageReference Include="Sentry.AspNetCore" Version="3.0.7" />
+      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.AmazonWebServices" Version="1.0.0-CI-20210907-114145" />
+      <PackageReference Include="CloudEngineering.CodeOps.Infrastructure.Kafka" Version="1.0.0-CI-20210907-114145" />
+      <PackageReference Include="Sentry.AspNetCore" Version="3.9.0" />
     </ItemGroup>
 
 
