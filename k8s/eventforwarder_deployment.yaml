@@ -6,7 +6,6 @@ metadata:
   labels:
     project: developerautomation
     department: cloudengineering
-    component: azure-devops-janitor
     app: event-forwarder
 spec:
   replicas: 1

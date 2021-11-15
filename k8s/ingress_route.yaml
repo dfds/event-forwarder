@@ -1,0 +1,31 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  creationTimestamp: null
+  name: event-forwarder-ingress
+  namespace: developerautomation-xavgy
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: Host(`api.hellman.oxygen.dfds.cloud`) && PathPrefix(`/eventforwarder`)
+    middlewares:
+    - name: api.hellman.oxygen.dfds.cloud-eventforwarder
+      namespace: developerautomation-xavgy
+    priority: 0
+    services:
+    - kind: Service
+      name: event-forwarder-service
+      namespace: developerautomation-xavgy
+      port: external
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: api.hellman.oxygen.dfds.cloud-eventforwarder
+  namespace: developerautomation-xavgy
+spec:
+  stripPrefix:
+    prefixes:
+    - /eventforwarder
